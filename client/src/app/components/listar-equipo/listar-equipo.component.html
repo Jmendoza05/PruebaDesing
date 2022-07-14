@@ -1,0 +1,50 @@
+<app-navbar></app-navbar>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-lg-8 offset-lg-2">
+      <div class="card">
+        <div class="card-body text-center">
+          <span class="titulo">LISTADO DE EQUIPOS</span>
+          <table *ngIf="listEquipo.length > 0" class="table table-striped mt-3">
+            <thead>
+              <tr>
+                <th scope="col">Equipo</th>
+                <th scope="col">Valor Actual</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let equipo of listEquipo">
+                <th scope="row">{{ equipo.nombre }}</th>
+                <td>{{ equipo.valorActual }}</td>
+                <td>
+                  <i
+                    [routerLink]="['/editar-equipo', equipo._id]"
+                    class="fa-solid fa-pen-to-square text-primary"
+                  ></i>
+                  <i
+                    (click)="eliminarEquipo(equipo._id)"
+                    class="fa-solid fa-trash text-danger"
+                  ></i>
+                </td>
+                <td>
+                  <i
+                    *ngIf="equipo.valorActual > equipo.valorMaximo"
+                    class="fa-solid fa-triangle-exclamation text-danger"
+                  ></i>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <h3
+            style="text-align: center; margin-top: 10px"
+            *ngIf="listEquipo.length == 0"
+          >
+            NO HAY EQUIPO CREADO
+          </h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,38 @@
+<app-navbar></app-navbar>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-lg-8 offset-lg-2">
+      <div class="card">
+        <div class="card-body text-center">
+          <span class="titulo">LISTADO DE ALERTAS</span>
+          <table
+            *ngIf="listEquipoAlerta.length > 0"
+            class="table table-striped mt-3"
+          >
+            <thead>
+              <tr>
+                <th scope="col">Equipo</th>
+                <th scope="col">Valor Maximo</th>
+                <th scope="col">Valor Actual</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let equipo of listEquipoAlerta">
+                <th scope="row">{{ equipo.nombre }}</th>
+                <td class="green">{{ equipo.valorMaximo }}</td>
+                <td class="red">{{ equipo.valorActual }}</td>
+              </tr>
+            </tbody>
+          </table>
+          <h3
+            style="text-align: center; margin-top: 10px"
+            *ngIf="listEquipoAlerta.length == 0"
+          >
+            NO HAY EQUIPO CREADO
+          </h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
